@@ -1,0 +1,15 @@
+{
+  "extends": "eslint:recommended",
+  "parser": "babel-eslint",
+  "env": {
+    "node": true,
+    "browser": true,
+    "commonjs": true,
+    "es6": true,
+    "jquery": true
+  },
+  "globals": {
+    "window": true,
+    "document": true
+  }
+}
