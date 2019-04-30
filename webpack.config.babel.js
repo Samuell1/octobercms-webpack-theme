@@ -27,7 +27,7 @@ const config = {
   },
   output: {
     path: resolve('assets/compiled/'),
-    publicPath: NODE_ENV === 'development' ? '/themes/dr/assets/compiled/' : 'https://cdn.mypage.com/assets/compiled/',
+    publicPath: NODE_ENV === 'development' ? '/themes/THEME_NAME/assets/compiled/' : 'https://cdn.mypage.com/assets/compiled/',
     filename: '[contenthash].js',
   },
   devtool: NODE_ENV === 'development' ? 'source-map' : false,
