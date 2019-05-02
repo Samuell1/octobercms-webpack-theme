@@ -12,6 +12,10 @@ const NODE_ENV = process.env.NODE_ENV || 'production'
 
 const resolve = (dir) => path.join(__dirname, dir)
 
+const THEME_FOLDER = '/themes/THEME_NAME'
+const CDN_LINK = 'https://cdn.mydomain.com/assets/'
+const OUTPUT_FOLDER = 'compiled/'
+
 const config = {
   mode: NODE_ENV,
   entry: {
@@ -26,8 +30,8 @@ const config = {
     product: './assets/js/pages/product.js',
   },
   output: {
-    path: resolve('assets/compiled/'),
-    publicPath: NODE_ENV === 'development' ? '/themes/THEME_NAME/assets/compiled/' : 'https://cdn.mypage.com/assets/compiled/',
+    path: resolve('assets/' + OUTPUT_FOLDER),
+    publicPath: NODE_ENV === 'development' ? THEME_FOLDER + '/assets/' + OUTPUT_FOLDER : CDN_LINK + OUTPUT_FOLDER,
     filename: '[contenthash].js',
   },
   devtool: NODE_ENV === 'development' ? 'source-map' : false,
@@ -35,6 +39,7 @@ const config = {
     modules: ['node_modules'],
     extensions: ['.js', '.vue'],
     alias: {
+      // Define custom modules
       modules: resolve('assets/js/modules/'),
     }
   },
@@ -92,7 +97,7 @@ const config = {
           options: {
             sourceMap: NODE_ENV === 'development',
             config: {
-              path: `${__dirname}/postcss.config.js`,
+              path: resolve('postcss.config.js'),
             },
           },
         },
@@ -107,10 +112,11 @@ const config = {
     {
       test: /\.(png|jpe?g|svg)$/,
       use: [{
-        loader: 'file-loader',
+        loader: 'url-loader',
         options: {
+          limit: 8000,
           name: '[name].[ext]',
-          outputPath: 'compiled/images/',
+          outputPath: 'images'
         },
       }],
     },
