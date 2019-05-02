@@ -6,7 +6,7 @@ import MiniCssExtractPlugin from 'mini-css-extract-plugin'
 import CleanWebpackPlugin from 'clean-webpack-plugin'
 import UglifyJSPlugin from 'uglifyjs-webpack-plugin'
 import FixStyleOnlyEntriesPlugin from 'webpack-fix-style-only-entries'
-import ManifestPlugin from 'webpack-manifest-plugin'
+import WebpackAssetsManifest from 'webpack-assets-manifest'
 
 const NODE_ENV = process.env.NODE_ENV || 'production'
 
@@ -46,7 +46,9 @@ const config = {
   context: resolve('/'),
   plugins: [
     new WebpackBar(),
-    new ManifestPlugin(),
+    new WebpackAssetsManifest({
+      publicPath: true,
+    }),
     new FixStyleOnlyEntriesPlugin(),
     new CleanWebpackPlugin({ cleanOnceBeforeBuildPatterns: ['**/*', '!.gitignore'], }),
     new webpack.NoEmitOnErrorsPlugin(),
