@@ -1,7 +1,6 @@
 {
   "name": "octobercms-webpack-theme",
   "version": "1.0.0",
-  "description": "",
   "dependencies": {
     "jquery": "^3.4.0",
     "webpack": "^4.30.0"
@@ -34,18 +33,19 @@
     "postcss-url": "^8.0.0",
     "sass-loader": "^7.1.0",
     "style-loader": "^0.23.1",
+    "terser-webpack-plugin": "^1.2.3",
     "uglifyjs-webpack-plugin": "^2.1.2",
     "url-loader": "^1.1.2",
     "webpack-assets-manifest": "^3.1.1",
     "webpack-cli": "^3.3.1",
+    "webpack-dev-server": "^3.3.1",
     "webpack-fix-style-only-entries": "^0.2.1",
     "webpackbar": "^3.2.0"
   },
   "scripts": {
-    "dev": "cross-env NODE_ENV=development LOCAL_DEV=local webpack --watch",
+    "dev": "cross-env NODE_ENV=development LOCAL_DEV=local webpack-dev-server --hot",
     "build:dev": "cross-env NODE_ENV=development webpack",
     "build:prod": "webpack"
   },
-  "author": "",
-  "license": "ISC"
+  "author": "Samuell"
 }
