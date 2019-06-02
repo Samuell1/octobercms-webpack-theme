@@ -13,7 +13,7 @@ const isDev = NODE_ENV === 'development'
 
 const resolve = (dir) => path.join(__dirname, dir)
 
-const THEME_FOLDER = 'http://localhost:8080/themes/dr'
+const THEME_FOLDER = 'http://localhost:8080/themes/THEME_NAME'
 const CDN_LINK = 'https://cdn.mydomain.com/assets/'
 const OUTPUT_FOLDER = 'build/'
 
