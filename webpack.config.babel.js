@@ -27,6 +27,7 @@ const config = {
 
     // fonts
     fonts: './scss/fonts.scss',
+    framework: './scss/framework.scss',
 
     // separate packages
     lazysizes: './js/lazysizes.js',
@@ -40,6 +41,7 @@ const config = {
     path: resolve('assets/' + OUTPUT_FOLDER),
     publicPath: isDev ? globalPublicPath : CDN_LINK + OUTPUT_FOLDER,
     filename: isDev ? '[name].js' : '[contenthash].js',
+    chunkFilename: isDev ? '[name].chunk.js' : '[contenthash].chunk.js'
   },
   devServer: {
     hot: true,
@@ -57,7 +59,7 @@ const config = {
   devtool: isDev ? 'source-map' : false,
   resolve: {
     modules: ['node_modules'],
-    extensions: ['.js', '.vue'],
+    extensions: ['.js', '.vue', '.css', '.scss'],
     alias: {
       // Define custom modules
       modules: resolve('assets/js/modules/'),
@@ -86,7 +88,7 @@ const config = {
     }),
     new MiniCssExtractPlugin({
       filename: isDev ? '[name].css' : '[contenthash].css',
-      chunkFilename: isDev ? '[id].css' : '[id].[hash].css',
+      chunkFilename: isDev ? '[id].css' : '[contenthash].css',
     }),
   ],
   module: {
@@ -111,7 +113,7 @@ const config = {
           {
             loader: 'css-loader',
             options: {
-              sourceMap: isDev,
+              sourceMap: isDev
             },
           },
           {
@@ -127,6 +129,7 @@ const config = {
             loader: 'sass-loader',
             options: {
               sourceMap: isDev,
+              includePaths: ['./node_modules']
             },
           },
         ]
@@ -173,8 +176,8 @@ const config = {
           enforce: true
         },
         vendor: {
-          test: /node_modules/,
-          chunks: "initial",
+          test: /[\\/]node_modules[\\/]/i,
+          chunks: "all",
           name: "vendor",
           priority: 10,
           enforce: true
