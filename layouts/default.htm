@@ -1,1 +1,25 @@
+{% spaceless %}
+<!DOCTYPE html>
+<html lang="{{ activeLocale }}">
+    <head>
+        <meta charset="utf-8">
+        <title>{{ this.page.url != '/' ? this.page.title ~ ' - ' : '' }}{{ this.theme.site_name }}</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+        <link rel="stylesheet" href="{{ asset_cdn('app.css') }}" importance="high">
+        {% styles %}
+    </head>
+    <body>
 
+        {% page %}
+
+        {# styles #}
+        <link rel="stylesheet" href="{{ asset_cdn('framework.css') }}" rel="preload">
+
+        {# scripts #}
+        <script src="{{ asset_cdn('runtime.js') }}" importance="high"></script>
+        <script src="{{ asset_cdn('vendor.js') }}" importance="high"></script>
+        <script src="{{ asset_cdn('app.js') }}" importance="high"></script>
+        {% scripts %}
+    </body>
+</html>
+{% endspaceless %}
