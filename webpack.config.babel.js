@@ -25,17 +25,11 @@ const config = {
     // global
     app: './js/app.js',
 
-    // fonts
-    fonts: './scss/fonts.scss',
+    // framework
     framework: './scss/framework.scss',
 
-    // separate packages
-    lazysizes: './js/lazysizes.js',
-
-    // separate pages
-    shop: './js/page/shop.js',
-    basket: './js/page/basket.js',
-    product: './js/page/product.js',
+    // separate pages - example
+    //product: './js/page/product.js',
   },
   output: {
     path: resolve('assets/' + OUTPUT_FOLDER),
